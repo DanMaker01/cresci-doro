@@ -1,0 +1,9 @@
+build/
+dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.tmp
+historico_pomodoro.json*
+config_tempos.json
+sessao_em_andamento.json

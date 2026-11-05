@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0e0f15">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>crescidoro</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="topo">
+      <span class="marca">crescidoro</span>
+      <span id="stats" class="stats"></span>
+      <button id="b-ajustes" class="icone" aria-label="ajustes">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+      </button>
+    </header>
+
+    <nav id="abas" class="abas">
+      <button data-t="pomodoro" style="--c:#e25454"><span><i></i>pomodoro</span><small></small></button>
+      <button data-t="break" style="--c:#5484e8"><span><i></i>break</span><small></small></button>
+      <button data-t="long_break" style="--c:#4cba70"><span><i></i>long</span><small></small></button>
+    </nav>
+
+    <section class="relogio">
+      <div id="tempo" class="tempo">25:00</div>
+      <div class="barra"><i id="progresso"></i></div>
+      <div class="sub"><span id="desde"></span><span id="ciclo" class="ciclo"></span></div>
+    </section>
+
+    <div class="acoes">
+      <button id="b-play" class="btn primario grande">iniciar</button>
+      <button id="b-fim" class="btn grande">finalizar</button>
+    </div>
+    <div class="centro"><button id="b-cresc" class="chip-cresc"></button></div>
+
+    <section class="historico">
+      <div class="ferramentas">
+        <div class="seg" id="vistas">
+          <button data-v="barras">barras</button><button data-v="linha">linha</button><button data-v="mapa">mapa</button>
+        </div>
+        <button id="b-novo" class="btn pequeno">+ registro</button>
+      </div>
+      <div class="ferramentas" id="filtros">
+        <div class="seg" id="periodos"><button data-v="14d">14d</button><button data-v="total">total</button></div>
+        <div class="chips" id="chips">
+          <button data-t="pomodoro" style="--c:#e25454"><i></i>pomo</button>
+          <button data-t="break" style="--c:#5484e8"><i></i>break</button>
+          <button data-t="long_break" style="--c:#4cba70"><i></i>long</button>
+        </div>
+      </div>
+      <div class="faixa" id="faixa-linha"><span id="faixa"></span><span id="totais"></span></div>
+      <div id="grafico" class="grafico"></div>
+      <div id="mapa" class="mapa" hidden></div>
+      <p class="rodape">toque numa barra para editar · toque num dia para ver os registros</p>
+    </section>
+  </main>
+
+  <div id="veu" class="veu" hidden></div>
+  <div id="sheet" class="sheet" hidden role="dialog" aria-modal="true"></div>
+  <div id="toast" class="toast" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
