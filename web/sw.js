@@ -1,6 +1,6 @@
 // Service worker: deixa o app funcionando offline.
 // Ao mudar qualquer arquivo do app, aumente a VERSAO para os celulares baixarem a nova versão.
-const VERSAO = 'crescidoro-v1';
+const VERSAO = 'crescidoro-v2';
 const ARQUIVOS = [
   './', 'index.html', 'style.css', 'manifest.webmanifest',
   'js/app.js', 'js/core.js', 'js/chart.js', 'js/heatmap.js',
