@@ -413,8 +413,8 @@ function atualizarHistorico() {
   atualizarCabecalho();
   const n = store.registros.length;
   $('#dados-info').textContent = n
-    ? `${n} registro${n === 1 ? '' : 's'} neste aparelho, desde ${store.registros[0].inicio.slice(8, 10)}/${store.registros[0].inicio.slice(5, 7)}/${store.registros[0].inicio.slice(0, 4)} · o histórico não sai daqui sem exportar`
-    : 'nenhum registro neste aparelho ainda · importe o arquivo exportado do PC ou de outro aparelho';
+    ? `${n} registro${n === 1 ? '' : 's'} neste aparelho, desde ${store.registros[0].inicio.slice(8, 10)}/${store.registros[0].inicio.slice(5, 7)}/${store.registros[0].inicio.slice(0, 4)} - o histórico fica armazenado localmente`
+    : 'nenhum registro neste aparelho ainda · você pode começar a usar ou importar o históricode outro aparelho';
 }
 store.on(atualizarHistorico);
 
