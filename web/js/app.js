@@ -320,26 +320,38 @@ function sheetAjustes() {
     store.save(); syncWakeLock(); render();
   }));
   $('#aj-testar', sh).onclick = () => { audio.currentTime = 0; audio.play().catch(() => toast('o navegador bloqueou o som')); };
-  $('#aj-export', sh).onclick = () => {
-    const blob = new Blob([store.exportar()], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `crescidoro-historico-${dayKey(new Date())}.json`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-  };
-  $('#aj-import', sh).onchange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    try {
-      const n = store.importar(await file.text());
-      toast(n ? `${n} registros importados` : 'nenhum registro novo', n ? desfazer : null);
-    } catch (err) {
-      toast('arquivo inválido');
-    }
-    e.target.value = '';
-  };
+  $('#aj-export', sh).onclick = exportarHistorico;
+  $('#aj-import', sh).onchange = importarHistorico;
 }
+
+// ---------------------------------------------------------------- importar / exportar
+function exportarHistorico() {
+  if (!store.registros.length) { toast('nada para exportar'); return; }
+  const blob = new Blob([store.exportar()], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `crescidoro-historico-${dayKey(new Date())}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast(`${store.registros.length} registros exportados`);
+}
+
+async function importarHistorico(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const n = store.importar(await file.text());
+    toast(n ? `${n} registros importados` : 'nenhum registro novo (todos já existiam)', n ? desfazer : null);
+  } catch (err) {
+    toast('arquivo inválido');
+  }
+  e.target.value = '';
+}
+
+$('#b-export').onclick = exportarHistorico;
+$('#b-import').onchange = importarHistorico;
 
 function sheetDuracao(t) {
   const sh = abrirSheet(`
@@ -399,6 +411,10 @@ function atualizarHistorico() {
   grafico.setDados(store.registros, hoje);
   heat.setDados(store.registros, hoje);
   atualizarCabecalho();
+  const n = store.registros.length;
+  $('#dados-info').textContent = n
+    ? `${n} registro${n === 1 ? '' : 's'} neste aparelho, desde ${store.registros[0].inicio.slice(8, 10)}/${store.registros[0].inicio.slice(5, 7)}/${store.registros[0].inicio.slice(0, 4)} · o histórico não sai daqui sem exportar`
+    : 'nenhum registro neste aparelho ainda · importe o arquivo exportado do PC ou de outro aparelho';
 }
 store.on(atualizarHistorico);
 
