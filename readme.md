@@ -13,13 +13,13 @@ python main.py
 ## Funcionalidades
 
 **Timer**
-- Pomodoro / Break / Long; a duração fica sob cada aba — clique e digite `25` ou `25:30`.
+- Pomodoro / Break / Long; a duração fica sob cada aba - clique e digite `25` ou `25:30`.
 - Crescidoro: a cada pomodoro concluído *naturalmente*, o próximo cresce `X%`.
 - Long break automático a cada `N` pomodoros (0 desativa). Os pontinhos sob o
   timer mostram o progresso do ciclo.
 - Tempo restante no título da janela.
 
-**Motivo do fim** — todo registro guarda por que terminou:
+**Motivo do fim** - todo registro guarda por que terminou:
 
 | motivo   | quando                                                        |
 |----------|---------------------------------------------------------------|
@@ -31,7 +31,7 @@ python main.py
 Registros pausados/fechados aparecem em tom mais apagado no gráfico.
 
 **Histórico**
-- **barras**: em cada dia, 3 barras lado a lado — pomodoro, break e long. Cada
+- **barras**: em cada dia, 3 barras lado a lado - pomodoro, break e long. Cada
   barra é subdividida pelos registros daquele tipo no dia (o mais antigo embaixo).
 - Clique num registro → menu: **editar…**, **duplicar**, **novo registro neste
   dia**, **remover**. Clique num espaço vazio do dia → **novo registro…**.
@@ -68,10 +68,10 @@ Registros pausados/fechados aparecem em tom mais apagado no gráfico.
 Ficam ao lado do executável (ou na raiz do projeto em dev). Para outro local,
 defina a variável `CRESCIDORO_DATA`.
 
-- `historico_pomodoro.json` — `{"versao": 2, "registros": [{id, estado, inicio, duracao_s, motivo}]}`.
+- `historico_pomodoro.json` - `{"versao": 2, "registros": [{id, estado, inicio, duracao_s, motivo}]}`.
   O formato antigo (lista com `timestamp`) é migrado automaticamente e uma cópia
   é guardada em `historico_pomodoro.json.v1.bak`.
-- `config_tempos.json` — durações, crescidoro, ciclo e preferências do gráfico
+- `config_tempos.json` - durações, crescidoro, ciclo e preferências do gráfico
   (compatível com o arquivo antigo).
 - Gravação atômica: um fechamento no meio da escrita não corrompe os arquivos.
 
@@ -144,7 +144,7 @@ inicial / Instalar app*. Ele abre em tela cheia, com ícone, e funciona sem inte
 - Se a página for fechada com o timer rodando, ao reabrir ele continua do ponto certo.
 
 **Limitação:** com a tela apagada, o Android pode pausar o navegador e o som
-pode não tocar na hora — por isso a opção "manter a tela ligada" vem ativada.
+pode não tocar na hora - por isso a opção "manter a tela ligada" vem ativada.
 
 **Testar no PC:** `python -m http.server -d web 8000` e abra `http://localhost:8000`.
 
